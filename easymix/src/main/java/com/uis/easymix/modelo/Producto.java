@@ -15,7 +15,7 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = Producto.TABLE_NAME)
 public class Producto {
-    public static final String TABLE_NAME = "producto";
+    public static final String TABLE_NAME = "Producto";
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
