@@ -16,10 +16,10 @@ public class Proveedor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name="proveedor_nombre")
+    @Column(name="nombre")
     private String nombre;
     
-    @Column(name="proveedor_contacto")
+    @Column(name="contacto")
     private String contacto;
     
     public Proveedor() {
@@ -48,11 +48,11 @@ public class Proveedor {
         this.nombre = nombre;
     }
     
-    public String getContacton() {
+    public String getContacto() {
         return contacto;
     }
     
-    public void setContacton(String contacto) {
+    public void setContacto(String contacto) {
         this.contacto = contacto;
     }
 }
