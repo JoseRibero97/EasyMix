@@ -26,15 +26,15 @@
                 <form id="form-usuario" class="mt-4" action="" onsubmit="" method="POST">
                     <div class="mb-3">
                         <label for="producto-id">Id</label>
-                        <input type="text" class="form-control" id="producto-id" name="producto-id">
+                        <input type="number" class="form-control" id="producto-id" name="producto-id">
                     </div>
                     <div class="mb-3">
                         <label for="proveedor-id">idProveedor</label>
-                        <input type="text" class="form-control" id="proveedor-id" name="proveedor-id">
+                        <input type="number" class="form-control" id="proveedor-id" name="proveedor-id">
                     </div>
                     <div class="mb-3">
                         <label for="usuario-id">idUsuario</label>
-                        <input type="text" class="form-control" id="usuario-id" name="usuario-id">
+                        <input type="number" class="form-control" id="usuario-id" name="usuario-id">
                     </div>
                     <div class="mb-3">
                         <label for="producto-nombre" class="form-label">nombre</label>
@@ -54,7 +54,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="producto-cantidad" class="form-label">cantidad</label>
-                        <input type="text" class="form-control" id="producto-cantidad" name="producto-cantidad">
+                        <input type="number" class="form-control" id="producto-cantidad" name="producto-cantidad">
+                    </div>
+                    <div>
+                        <label for="producto-medida" class="form-label">medida</label>
+                        <input type="text" class="form-control" id="producto-medida" name="producto-medida">
                     </div>
                     <button type="button" class="btn btn-primary" onclick="saveProducto()">Guardar</button>
                     <button type="button" class="btn btn-primary" onclick="deleteProducto()">Eliminar</button>

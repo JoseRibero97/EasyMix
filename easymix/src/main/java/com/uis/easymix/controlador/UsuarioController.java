@@ -43,7 +43,7 @@ public class UsuarioController {
             Usuario usuarioToUpdate = usuario.get();
             usuarioToUpdate.setNombre(usuarioDetails.getNombre());
             usuarioToUpdate.setEmail(usuarioDetails.getEmail());
-            usuarioToUpdate.setPassword(usuarioDetails.getPassword());
+            usuarioToUpdate.setContrasena(usuarioDetails.getContrasena());
             Usuario updatedUsuario = usuarioService.save(usuarioToUpdate);
             return ResponseEntity.ok(updatedUsuario);
         } else {

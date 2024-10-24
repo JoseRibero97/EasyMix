@@ -27,7 +27,7 @@ public class Usuario {
     private String email;
 
     @NotNull
-    private String password;
+    private String contrasena;
 
     // Getters y Setters
     public String getNombre() {
@@ -46,12 +46,12 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
 }

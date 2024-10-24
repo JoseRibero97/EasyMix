@@ -56,13 +56,18 @@ public class Producto {
     @Column(name="cantidad")
     private int cantidad;
     
+    @NotNull
+    @NotBlank(message = "La medida es obligatoria")
+    @Column(name="medida")
+    private String medida;
+    
     public Producto() {
         
     }
     
-    public Producto(Long id, Proveedor idProveedor, Usuario idUsuario,
+    public Producto(Long producto_id, Proveedor idProveedor, Usuario idUsuario,
             String nombre, String descripcion, String marca, 
-            String presentacion, int cantidad) {
+            String presentacion, int cantidad, String medida) {
         this.id = id;
         this.idProveedor = idProveedor;
         this.idUsuario = idUsuario;
@@ -71,6 +76,7 @@ public class Producto {
         this.marca = marca;
         this.presentacion = presentacion;
         this.cantidad = cantidad;
+        this.medida = medida;
     }
     
     public Long getId() {
@@ -137,4 +143,11 @@ public class Producto {
         this.cantidad = cantidad;
     }
     
+    public String getMedida() {
+        return medida;
+    }
+    
+    public void setMedida(String medida) {
+        this.medida = medida;
+    }
 }

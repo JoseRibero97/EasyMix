@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,18 +25,21 @@ public class ProductoController {
     ProductoService productoService;
     
     //Listar los Productos
+    @CrossOrigin
     @GetMapping("/list")
     public List<Producto> cargarProductos() {
         return productoService.getProductos();
     }
     
     //Buscar por Id
+    @CrossOrigin
     @GetMapping("/list/{id}")
     public Producto buscarPorId(@PathVariable Long id) {
         return productoService.buscarProducto(id);
     }
     
     //Agregar Producto
+    @CrossOrigin
     @PostMapping("/")
     public ResponseEntity<Producto> agregar(@Valid @RequestBody Producto producto) {
         Producto obj = productoService.nuevoProducto(producto);
@@ -43,6 +47,7 @@ public class ProductoController {
     }
     
     //Actualizar el Producto
+    @CrossOrigin
     @PutMapping("/")
     public ResponseEntity<Producto> editar(@Valid @RequestBody Producto producto) {
         Producto obj = productoService.nuevoProducto(producto);
@@ -54,6 +59,7 @@ public class ProductoController {
             obj.setMarca(producto.getMarca());
             obj.setPresentacion(producto.getPresentacion());
             obj.setCantidad(producto.getCantidad());
+            obj.setMedida(producto.getMedida());
             productoService.nuevoProducto(obj);
         }else {
             return new ResponseEntity(obj, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -62,6 +68,7 @@ public class ProductoController {
     }
     
     //Eliminar el Producto
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public ResponseEntity<Producto> eliminar(@PathVariable Long id) {
         Producto obj = productoService.buscarProducto(id);
