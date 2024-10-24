@@ -32,7 +32,7 @@ public class ProveedorController {
 
     @PutMapping("/")
     public ResponseEntity<Proveedor> editar(@RequestBody Proveedor proveedor){
-        Proveedor obj = proveedorService.buscarProveedores(proveedor.getProveedor_id());
+        Proveedor obj = proveedorService.buscarProveedores(proveedor.getId());
         if(obj != null){
             obj.setNombre(proveedor.getNombre());
             obj.setContacto(proveedor.getContacto());

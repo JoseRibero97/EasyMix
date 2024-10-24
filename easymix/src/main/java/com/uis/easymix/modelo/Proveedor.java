@@ -7,15 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = Proveedor.TABLE_NAME)
 public class Proveedor {
@@ -23,12 +15,36 @@ public class Proveedor {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long proveedor_id;
+    private Long id;
     
-    @Column(name="proveedor_nombre")
+    @Column(name="nombre")
     private String nombre;
     
-    @Column(name="proveedor_contacto")
+    @Column(name="contacto")
     private String contacto;
+    
+    public Long getId(){
+        return id;
+    }
+    
+    public void setId(Long id){
+        this.id = id;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getContacto() {
+        return contacto;
+    }
+
+    public void setContacto(String email) {
+        this.contacto = email;
+    }
 }
 
