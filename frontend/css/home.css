@@ -1,0 +1,203 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    flex: 1;
+}
+
+.navbar {
+    background-color: #1D3557; /* Dark blue */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 35px;
+
+}
+
+/* Left section - Logo and name */
+.left-nav {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    filter: drop-shadow(0 0 1px #F1FAEE);
+}
+
+.logo-text {
+    color: #F1FAEE; /* Light cream */
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.user-text {
+    color: #F1FAEE; /* Light cream */
+    font-size: large;
+    font-weight: bold;
+    margin-left: 10px;
+    padding-right: 10px;
+}
+
+/* Center section - Images */
+.center-nav {
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+}
+
+.nav-item {
+    position: relative;
+    margin-left: 40px;
+    display: flex;
+}
+
+.nav-icon {
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+    filter: drop-shadow(0 0 1px #F1FAEE);
+    transition: transform 0.3s ease;
+}
+
+.nav-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Tooltip for hovering */
+.tooltip {
+    visibility: hidden; 
+    opacity: 0; 
+    white-space: nowrap;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    position: absolute; 
+    transform: translateY(25%);
+    padding-left: 10px;
+}
+
+.nav-item:hover .tooltip {
+    visibility: visible;
+    opacity: 1; 
+    position:relative;
+}
+
+/* Right section - User logo */
+.right-nav {
+    display: flex;
+    align-items: center;
+}
+
+.user-icon {
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+    filter: drop-shadow(0 0 6px #F1FAEE);
+}
+
+.ingresar-btn {
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    background-color: #A8DADC;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.ingresar-btn img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.ingresar-btn:hover {
+    background-color: #F1FAEE;
+}
+
+
+footer {
+    background-color: #1D3557;
+    color: #F1FAEE;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  color: white;
+}
+
+/* Estilo para la sección izquierda del footer */
+.left-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left-footer img {
+    width: 120px;
+    height: 120px;
+    opacity: 2;
+    padding-left: 600px;
+}
+
+.left-footer span {
+    margin-top: 10px;
+    padding-left: 600px;
+    font-size: 18px;
+    font-weight: bold;
+    font-size: large;
+    font-weight: bold;
+}
+
+/* Estilo para la sección derecha del footer */
+.right-footer {
+    text-align: center;
+    font-size: 14px;
+    padding-right: 600px;
+}
+
+/* Estilo para mantener el footer limpio y sencillo */
+footer a, footer p {
+    color: white;
+    text-decoration: none;
+    font-size: large;
+    font-weight: bold;
+
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Cambia la dirección de la barra de navegación a vertical */
+        align-items: flex-start; /* Alinea los elementos a la izquierda */
+    }
+
+    .nav-item {
+        margin-left: 0; /* Quita el margen para móviles */
+        margin-top: 10px; /* Añade espacio entre los ítems */
+    }
+
+    .logo-text {
+        font-size: 20px; /* Reduce el tamaño de la fuente en pantallas pequeñas */
+    }
+
+    .user-text {
+        font-size: medium; /* Ajusta el tamaño de la fuente */
+    }
+}

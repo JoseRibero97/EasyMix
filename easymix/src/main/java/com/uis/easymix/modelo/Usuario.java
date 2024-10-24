@@ -13,7 +13,7 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 @Table(name = Usuario.TABLE_NAME)
 public class Usuario {
-    public static final String TABLE_NAME = "Usuario";
+    public static final String TABLE_NAME = "usuario";
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
