@@ -1,64 +1,72 @@
 package com.uis.easymix.controlador;
 
+import com.uis.easymix.modelo.LoginDTO;
+import com.uis.easymix.modelo.Proveedor;
 import com.uis.easymix.modelo.Usuario;
 import com.uis.easymix.servicio.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin
 @RestController
-@RequestMapping("/api/usuarios")
+@RequestMapping("/api/usuario")
 public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping
+    @GetMapping("/registros")
     public List<Usuario> getAllUsuarios() {
-        return usuarioService.findAll();
+        return usuarioService.getUsuario();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> getUsuarioById(@PathVariable Long id) {
-        Optional<Usuario> usuario = usuarioService.findById(id);
-        if (usuario.isPresent()) {
-            return ResponseEntity.ok(usuario.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public Usuario getUsuarioById(@PathVariable Long id) {
+        return usuarioService.buscarUsuario(id);
     }
 
     @PostMapping
-    public Usuario createUsuario(@RequestBody Usuario usuario) {
-        return usuarioService.save(usuario);
+    public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario) {
+        return new ResponseEntity<>(usuarioService.guardarUsuario(usuario), HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Usuario> updateUsuario(@PathVariable Long id, @RequestBody Usuario usuarioDetails) {
-        Optional<Usuario> usuario = usuarioService.findById(id);
-        if (usuario.isPresent()) {
-            Usuario usuarioToUpdate = usuario.get();
-            usuarioToUpdate.setNombre(usuarioDetails.getNombre());
-            usuarioToUpdate.setEmail(usuarioDetails.getEmail());
-            usuarioToUpdate.setContrasena(usuarioDetails.getContrasena());
-            Usuario updatedUsuario = usuarioService.save(usuarioToUpdate);
-            return ResponseEntity.ok(updatedUsuario);
-        } else {
-            return ResponseEntity.notFound().build();
+    @PutMapping
+    public ResponseEntity<Usuario> updateUsuario(@RequestBody Usuario usuarioDetails) {
+        Usuario obj = usuarioService.buscarUsuario(usuarioDetails.getId());
+        if(obj != null){
+            obj.setNombre(usuarioDetails.getNombre());
+            obj.setEmail(usuarioDetails.getEmail());
+            obj.setContrasena(usuarioDetails.getContrasena());
+            usuarioService.guardarUsuario(obj);
+            return new ResponseEntity<>(obj, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable Long id) {
-        Optional<Usuario> usuario = usuarioService.findById(id);
-        if (usuario.isPresent()) {
-            usuarioService.deleteById(id);
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<Usuario> deleteUsuario(@PathVariable Long id) {
+        Usuario usuario = usuarioService.buscarUsuario(id);
+        if (usuario != null) {
+            usuarioService.borrarUsuario(id);
+            return new ResponseEntity<>(usuario, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @PostMapping("/loginUsuario")
+    public int login(@RequestBody LoginDTO usuario){
+        int responseLogin = usuarioService.login(usuario);
+        return responseLogin;
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginCliente(@RequestBody LoginDTO usuario){
+        return usuarioService.ingresar(usuario);
     }
 }
