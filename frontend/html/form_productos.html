@@ -30,11 +30,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="proveedor-id">idProveedor</label>
-                        <input type="number" class="form-control" id="proveedor-id" name="proveedor-id">
+                        <input type="text" class="form-control" id="proveedor-id" name="proveedor-id">
                     </div>
                     <div class="mb-3">
                         <label for="usuario-id">idUsuario</label>
-                        <input type="number" class="form-control" id="usuario-id" name="usuario-id">
+                        <input type="text" class="form-control" id="usuario-id" name="usuario-id">
                     </div>
                     <div class="mb-3">
                         <label for="producto-nombre" class="form-label">nombre</label>
@@ -74,7 +74,7 @@
             window.onload = function(){
                 const urlParams = new URLSearchParams(window.location.search);
                 if (urlParams.get('idproducto') != null)
-                    loadProveedor(urlParams.get('idproducto'))
+                    loadProducto(urlParams.get('idproducto'))
                 
             }
         </script>

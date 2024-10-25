@@ -65,7 +65,7 @@ public class Producto {
         
     }
     
-    public Producto(Long producto_id, Proveedor idProveedor, Usuario idUsuario,
+    public Producto(Long id, Proveedor idProveedor, Usuario idUsuario,
             String nombre, String descripcion, String marca, 
             String presentacion, int cantidad, String medida) {
         this.id = id;

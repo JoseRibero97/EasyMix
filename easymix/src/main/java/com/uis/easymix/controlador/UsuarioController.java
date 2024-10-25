@@ -1,7 +1,6 @@
 package com.uis.easymix.controlador;
 
 import com.uis.easymix.modelo.LoginDTO;
-import com.uis.easymix.modelo.Proveedor;
 import com.uis.easymix.modelo.Usuario;
 import com.uis.easymix.servicio.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/usuario")
@@ -24,7 +22,7 @@ public class UsuarioController {
         return usuarioService.getUsuario();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/registros/{id}")
     public Usuario getUsuarioById(@PathVariable Long id) {
         return usuarioService.buscarUsuario(id);
     }

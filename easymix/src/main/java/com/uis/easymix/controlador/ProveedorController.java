@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/proveedor")
 public class ProveedorController {
@@ -20,7 +21,7 @@ public class ProveedorController {
         return proveedorService.getProveedores();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/registros/{id}")
     public Proveedor buscarProveedorId(@PathVariable Long id){
         return proveedorService.buscarProveedores(id);
     }
