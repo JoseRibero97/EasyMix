@@ -24,7 +24,7 @@ public class ProductoController {
     @Autowired
     ProductoService productoService;
     
-    //Listar los Productos
+    //Listar los Productos    
     @CrossOrigin
     @GetMapping("/list")
     public List<Producto> cargarProductos() {

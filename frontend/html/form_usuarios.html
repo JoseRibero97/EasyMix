@@ -9,10 +9,10 @@
 <body>
     <section class="container">
         <h1>Formulario de Usuarios</h1>
-        <form id="form-usuario" onsubmit="return false;">
+        <form id="form-usuario" method="post" onsubmit="return false;">
             <div class="mb-3">
                 <label for="usuario-id">Id</label>
-                <input type="text" class="form-control" id="usuario-id" name="usuario-id" readonly>
+                <input type="text" class="form-control" id="usuario-id" name="usuario-id">
             </div>
             <div class="mb-3">
                 <label for="usuario-nombre">Nombre</label>
@@ -21,6 +21,10 @@
             <div class="mb-3">
                 <label for="usuario-email">Email</label>
                 <input type="email" class="form-control" id="usuario-email" name="usuario-email" required>
+            </div>
+            <div class="mb-3">
+                <label for="usuario-email">contrasena</label>
+                <input type="password" class="form-control" id="usuario-contrasena" name="usuario-contrasena" required>
             </div>
             <button type="button" class="btn btn-primary" onclick="saveUsuario()">Guardar</button>
             <button type="button" class="btn btn-danger" onclick="deleteUsuario()">Eliminar</button>

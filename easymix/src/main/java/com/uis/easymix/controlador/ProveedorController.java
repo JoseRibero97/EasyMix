@@ -20,7 +20,7 @@ public class ProveedorController {
     public List<Proveedor> mostrarProveedores(){
         return proveedorService.getProveedores();
     }
-
+    
     @GetMapping("/registros/{id}")
     public Proveedor buscarProveedorId(@PathVariable Long id){
         return proveedorService.buscarProveedores(id);

@@ -33,7 +33,8 @@ function saveUsuario() {
     let id = document.getElementById('usuario-id').value
     let nombre = document.getElementById('usuario-nombre').value
     let email = document.getElementById('usuario-email').value
-    let data = { 'id': id, 'nombre': nombre, 'email': email }
+    let contrasena = document.getElementById('usuario-contrasena').value
+    let data = { 'id': id, 'nombre': nombre, 'email': email, 'contrasena': contrasena }
     let request = sendRequest('api/usuario/', id ? 'PUT' : 'POST', data)
     request.onload = function() {
         alert('Usuario creado o actualizado exitosamente.')
@@ -49,12 +50,14 @@ function loadUsuario(idusuario) {
     let nombre = document.getElementById('usuario-nombre')
     let email = document.getElementById('usuario-email')
     let id = document.getElementById('usuario-id')
+    let contrasena = document.getElementById('usuario-contrasena')
     request.onload = function() {
         let data = request.response;
         console.log(data);
         id.value = data.id
         email.value = data.email
         nombre.value = data.nombre
+        contrasena.value = data.contrasena
     }
     request.onerror = function() {
         alert("Error al recuperar los datos.");

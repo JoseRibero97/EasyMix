@@ -27,12 +27,12 @@ public class UsuarioController {
         return usuarioService.buscarUsuario(id);
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario) {
         return new ResponseEntity<>(usuarioService.guardarUsuario(usuario), HttpStatus.OK);
     }
 
-    @PutMapping
+    @PutMapping("/")
     public ResponseEntity<Usuario> updateUsuario(@RequestBody Usuario usuarioDetails) {
         Usuario obj = usuarioService.buscarUsuario(usuarioDetails.getId());
         if(obj != null){
