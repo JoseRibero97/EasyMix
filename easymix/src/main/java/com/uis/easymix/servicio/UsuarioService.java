@@ -43,7 +43,7 @@ public class UsuarioService implements IUsuarioService {
 
     @Override
     public int login(LoginDTO usuarioDTO) {
-        int u = usuarioRepositorio.buscarNombreUsuarioYContrasena(usuarioDTO.getEmail(), usuarioDTO.getContrasena());
+        int u = usuarioRepositorio.buscarCorreoElectronicoYContrasena(usuarioDTO.getEmail(), usuarioDTO.getContrasena());
         return u;
     }
 
@@ -52,7 +52,8 @@ public class UsuarioService implements IUsuarioService {
         Map<String, Object> response = new HashMap<>();
         Usuario usuario = null;
         try{
-            usuario = usuarioRepositorio.buscarNombreYContrasena(usuarioDTO.getEmail(), usuarioDTO.getContrasena());
+            System.out.println("Datos recibidos: " + usuarioDTO.getEmail() + ", " + usuarioDTO.getContrasena());
+            usuario = usuarioRepositorio.buscarCorreoYContrasena(usuarioDTO.getEmail(), usuarioDTO.getContrasena());
             if(usuario == null){
                 response.put("Usuario", null);
                 response.put("mensaje","Alerta: Usuario o nombre incorrectos" );
