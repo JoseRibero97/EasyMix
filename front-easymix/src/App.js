@@ -6,6 +6,7 @@ import UsuarioList from './componentes/ListaUsuarios';
 import FormularioProducto from './componentes/FormularioProducto';
 import ProductoList from './componentes/ListaProductos';
 import ProductoDetail from './componentes/DetalleProducto';
+import EditarProducto from './componentes/EditarProducto';
 
 
 function App(){
@@ -25,6 +26,7 @@ function App(){
           <Route path='/añadir-producto/:id' element={<FormularioProducto/>}/>
           <Route path='/producto' element={<ProductoList/>}/>
           <Route path='/producto/:id' element={<ProductoDetail/>}/>
+          <Route path='/editar-producto/:id' element={<EditarProducto/>}/>
         </Routes>
       </div>
     </Router>

@@ -46,7 +46,7 @@ function ProductoDetail() {
                 <td>{producto.medida}</td>
           </tbody>
         </table>
-        <button onClick={() => navigate(`/añadir-producto/${id}`)}>Editar Producto</button>
+        <button onClick={() => navigate(`/editar-producto/${id}`)}>Editar Producto</button>
         <button
             onClick={() => axios.delete(`http://localhost:8094/api/producto/${id}`) & navigate(`/producto`)}
             className="delete-button"

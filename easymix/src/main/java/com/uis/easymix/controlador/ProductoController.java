@@ -48,9 +48,9 @@ public class ProductoController {
     
     //Actualizar el Producto
     @CrossOrigin
-    @PutMapping("/")
-    public ResponseEntity<Producto> editar(@Valid @RequestBody Producto producto) {
-        Producto obj = productoService.nuevoProducto(producto);
+    @PutMapping("/{id}")
+    public ResponseEntity<Producto> editar(@PathVariable Long id, @Valid @RequestBody Producto producto) {
+        Producto obj = productoService.buscarProducto(id);
         if (obj != null) { 
             obj.setIdProveedor(producto.getIdProveedor());
             obj.setIdUsuario(producto.getIdUsuario());
