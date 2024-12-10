@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import ProductTable from './TablaProducto';
 
 
 function UsuarioDetail() {
@@ -34,9 +35,13 @@ function UsuarioDetail() {
                 <td>{usuario.email}</td>
           </tbody>
         </table>
-        <button onClick={() => navigate(`/añadir-producto/${id}`)}>Añadir Producto</button>
         <button onClick={() => navigate(`/usuario`)}>Lista de usuarios</button>
         <button onClick={() => navigate(`/producto`)}>Lista de Productos</button>
+      </div>
+      <div>
+        <h3>Productos de {usuario.nombre}</h3>
+        <ProductTable usuarioId={usuario.id} />
+        <button onClick={() => navigate(`/añadir-producto/${id}`)}>Añadir Producto</button>
       </div>
     </div>
   );

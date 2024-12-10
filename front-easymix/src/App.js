@@ -9,7 +9,7 @@ import ProductoDetail from './componentes/DetalleProducto';
 
 
 function App(){
-  const [setToken] = useState(''); 
+  const [token, setToken] = useState(''); 
   const handleLoginSuccess = (token) => { 
     setToken(token); 
     console.log("Token recibido: ", token); 

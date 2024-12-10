@@ -11,23 +11,19 @@ function FormularioProducto() {
   const [cantidad, setCantidad] = useState('');
   const [medida, setMedida] = useState('');
   const [proveedor, setProveedor] = useState('');
-  const [idUsuario, setIdUsuario] = useState('');
-  const [idProveedor, setIdProveedor] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {      
       // Crear la transacción con el objeto cuenta obtenido
-      axios.get(`http://localhost:8094/api/usuario/registros/${id}`)
-        .then(response => setIdUsuario(response.data))
-        .catch(error => console.error(error));
-      axios.get(`http://localhost:8094/api/proveedor/registros/${id}`)
-        .then(response1 => setIdProveedor(response1.data))
-        .catch(error => console.error(error));
+      const UsuarioResponse = await axios.get(`http://localhost:8094/api/usuario/registros/${id}`)
+
+      const ProveedorResponse = await axios.get(`http://localhost:8094/api/proveedor/registros/${proveedor}`)
+
       const productoResponse = await axios.post('http://localhost:8094/api/producto/', {
-        idProveedor,
-        idUsuario,
+        idProveedor: ProveedorResponse.data,
+        idUsuario: UsuarioResponse.data,
         nombre,
         descripcion,
         marca,
@@ -37,9 +33,9 @@ function FormularioProducto() {
       });
       console.log('Producto Añadido:', productoResponse.data);
       // Redirigir de nuevo a la página de detalles de la cuenta
-      navigate(`/producto`);
+      navigate(-1);
     } catch (error) {
-      console.error('Error al crear la transacción:', error);
+      console.error('Error al añadir el producto:', error);
     }
   };
 
