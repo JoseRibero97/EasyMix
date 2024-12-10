@@ -12,10 +12,14 @@ const LoginForm = ({ onLoginSuccess }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8094/api/usuario/login', { correo, contrasena });
+      console.log("Datos enviados: ", { email: correo, contrasena});
+      const response = await axios.post('http://localhost:8094/api/usuario/login', { email: correo, contrasena });
+      console.log("Respuesta del servidor: ", response.data);
       onLoginSuccess(response.data.token);
-      navigate(`/usuario`);
+      const usuario = response.data.Usuario;
+      navigate(`/usuario/${usuario.id}`);
     } catch (err) {
+      console.error('Error al autenticar: ', err);
       setError('Error de autenticación. Por favor, verifica tus credenciales.');
     }
   };
@@ -27,7 +31,7 @@ const LoginForm = ({ onLoginSuccess }) => {
         <div className="form-group">
           <label htmlFor="email">Correo Electrónico:</label>
           <input
-            type="text"
+            type="email"
             id='correo'
             value={correo}
             onChange={(e) => setCorreo(e.target.value)}
